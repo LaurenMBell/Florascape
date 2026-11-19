@@ -9,3 +9,5 @@ export default function RootLayout(): ReactNode {
     </AuthProvider>
   );
 }
+
+// EXPO ROUTING: https://docs.expo.dev/router/basics/core-concepts/

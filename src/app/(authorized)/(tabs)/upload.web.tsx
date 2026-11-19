@@ -7,11 +7,11 @@ import { useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Button from '@/components/button';
+import Button from '@/components/buttons/button';
 import ImageViewer from '@/components/image-viewer';
 
-import CircleButton from '@/components/circle-button';
-import IconButton from '@/components/icon-button';
+import CircleButton from '@/components/buttons/circle-button';
+import IconButton from '@/components/buttons/icon-button';
 
 
 const PlaceholderImage = require('@/assets/images/upload_default.png');

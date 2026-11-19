@@ -1,14 +1,23 @@
-import {useAuthSession} from "@/providers/AuthProvider";
-import { Button, StyleSheet, Text, View } from 'react-native';
+//LOGGED IN USER'S PROFILE PAGE
+import { useAuthSession } from "@/providers/AuthProvider";
+import { Button, StyleSheet, View, Text } from 'react-native';
+import { ProfileHeader } from '@/components/profile-header';
 
 export default function ProfileScreen() {
-  const {signOut, token} = useAuthSession()
-  const logout = () => {
-    signOut();
-  }
+  const { signOut } = useAuthSession();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile screen - MOBILE</Text>
+      <Text>PROFILE - MOBILE</Text>
+      <ProfileHeader
+        displayName="lauren bell"
+        avatarUri={undefined}
+        friendCount={1000}
+        favoritePlant="big leaf maple"
+        totalSightings={1000000}
+        level={60}
+        xpProgress={67}
+      />
       <Button title="Sign out" onPress={signOut} />
     </View>
   );
@@ -20,6 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#25292e',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 16
   },
   text: {
     fontSize: 30,
