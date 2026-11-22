@@ -1,10 +1,12 @@
 //LOGGED IN USER'S PROFILE PAGE
-import { useAuthSession } from "@/providers/AuthProvider";
+import { useAuthContext } from '@/hooks/use-auth-context';
+import { useEffect, useState } from 'react';
 import { Button, StyleSheet, View, Text } from 'react-native';
 import { ProfileHeader } from '@/components/profile-header';
+import SignOutButton from '@/components/sign-out-button';
 
 export default function ProfileScreen() {
-  const { signOut } = useAuthSession();
+  const {profile, signOut, token} = useAuthContext()
 
   return (
     <View style={styles.container}>
@@ -16,9 +18,9 @@ export default function ProfileScreen() {
         favoritePlant="big leaf maple"
         totalSightings={1000000}
         level={60}
-        xpProgress={67}
+        xpProgress={0.33}
       />
-      <Button title="Sign out" onPress={signOut} />
+      <SignOutButton />
     </View>
   );
 }
