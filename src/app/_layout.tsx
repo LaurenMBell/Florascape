@@ -5,15 +5,15 @@ import { SplashScreenController } from '@/components/splash-screen-controller'
 import { useAuthContext } from '@/hooks/use-auth-context'
 import AuthProvider from '@/providers/auth-provider'
 
-import { View, ActivityIndicator } from 'react-native'
-
 function RootNavigator() {
-  const { isLoggedIn, isLoading } = useAuthContext()
+  const { isLoggedIn } = useAuthContext()
 
   return (
     <Stack>
       <Stack.Protected guard={isLoggedIn}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/[userID]" options={{ title: 'Profile'}} />
+        <Stack.Screen name="sightings/[sightingID]" options={{ title: 'Sightings'}} />
       </Stack.Protected>
       <Stack.Protected guard={!isLoggedIn}>
         <Stack.Screen name="login" options={{ headerShown: false }} />

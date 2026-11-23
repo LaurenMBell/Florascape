@@ -65,6 +65,8 @@ export default function AuthProvider({ children }: PropsWithChildren) {
         claims,
         isLoading,
         profile,
+        // Ignore the eslint warning to change != to !==, that breaks the program
+        // This is how Supabase's docs defined it
         isLoggedIn: claims != undefined,
       }}
     >

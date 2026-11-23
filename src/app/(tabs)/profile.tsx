@@ -1,7 +1,7 @@
 //LOGGED IN USER'S PROFILE PAGE
 import { useAuthContext } from '@/hooks/use-auth-context';
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { ProfileHeader } from '@/components/profile-header';
 import SignOutButton from '@/components/sign-out-button';
 import { supabase } from '@/lib/supabase'
@@ -22,11 +22,20 @@ type User = {
 }
 
 export default function ProfileScreen() {
-  const {profile, signOut, token} = useAuthContext()
-  const [ userData, setUserData ] = useState<User[]>([])
-  const [error, setError] = useState<string | null>(null)
+  const { profile } = useAuthContext();
+  const [ userData, setUserData ] = useState<User[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    async function getUserData() {
+      const { data, error } = await supabase.from('profiles').select().eq('id',profile.id).single();
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      setUserData(data ?? []);
+    }
+
     if(!profile){
       return; // If profile isn't loaded, it pauses
     } else {
@@ -34,14 +43,14 @@ export default function ProfileScreen() {
     }
   }, [profile]); // [profile] makes it re-render when profile changes
 
-  async function getUserData() {
-    const { data, error } = await supabase.from('profiles').select().eq('id',profile.id).single()
-    if (error) {
-      setError(error.message)
-      return
-    }
-    setUserData(data ?? [])
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>Error loading profile data: {error}</Text>
+      </View>
+    )
   }
+
   return (
     <View style={styles.container}>
       <Text>PROFILE - MOBILE</Text>
