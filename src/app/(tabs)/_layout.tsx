@@ -9,12 +9,32 @@ export default function TabLayout() {
       rippleColor="rgba(255, 211, 61, 0.3)" //sets the color of the ripple effect on android
     >
 
-
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="game">
+        <NativeTabs.Trigger.Label>Game</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
-          sf={{ default: 'house', selected: 'house.fill' }}
-          md="home"
+          sf={{ default: 'gamecontroller', selected: 'gamecontroller.fill' }}
+          md="gamepad"
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="feed">
+        <NativeTabs.Trigger.Label>Feed</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'photo.on.rectangle.angled', selected: 'photo.on.rectangle.angled.fill' }}
+          md="filter"
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="upload">
+        <NativeTabs.Trigger.Label>Upload</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'camera', selected: 'camera.fill' }}
+          md="photo_camera"
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Map</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'map', selected: 'map.fill' }}
+          md="map"
         />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="profile">
@@ -22,13 +42,6 @@ export default function TabLayout() {
         <NativeTabs.Trigger.Icon
           sf={{ default: 'person', selected: 'person.fill' }}
           md="person"
-        />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="map">
-        <NativeTabs.Trigger.Label>Map</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          sf={{ default: 'map', selected: 'map.fill' }}
-          md="map"
         />
       </NativeTabs.Trigger>
     </NativeTabs>
