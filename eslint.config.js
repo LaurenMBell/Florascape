@@ -1,5 +1,5 @@
 // https://docs.expo.dev/guides/using-eslint/
-const { defineConfig } = require('eslint/config');
+const { defineConfig, globalIgnores } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 
 module.exports = defineConfig([
@@ -14,4 +14,7 @@ module.exports = defineConfig([
       },
     },
   },
+  globalIgnores([
+    "public/maplibre-gl-worker.mjs"
+  ]),
 ]);
